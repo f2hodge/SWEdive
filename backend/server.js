@@ -18,4 +18,4 @@ app.use('/api/users', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server started on port ${port} (server.js)`));
+app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -1,7 +1,7 @@
 {
-  "name": "miniature-train",
+  "name": "swedive",
   "version": "1.0.0",
-  "description": "Goalsetter app for youtube tutorial",
+  "description": "Patient and Exam app for Hack.Diversity Tech.Dive SWE",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/f2hodge/miniature-train.git"
+    "url": "git+https://github.com/f2hodge/SWEdive.git"
   },
   "bugs": {
-    "url": "https://github.com/f2hodge/miniature-train/issues"
+    "url": "https://github.com/f2hodge/SWEdive/issues"
   },
-  "homepage": "https://github.com/f2hodge/miniature-train#readme"
+  "homepage": "https://github.com/f2hodge/SWEdive#readme"
 }
