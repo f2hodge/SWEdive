@@ -20,7 +20,7 @@ const examSchema = mongoose.Schema({
     },
     // Can't figure out how to do Brixia
     // brixia: {
-    //     type: Number,
+    //     type: [Number],
     //     required: [true, 'Please add Brixia score']
     // }
     findings: {
