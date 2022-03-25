@@ -18,15 +18,24 @@ function Header() {
   return (
     <header className='header'>
         <div className="logo">
-            <Link to='/'>SWE Tech.Dive</Link>
+            <Link to='/'>
+                SWE Tech.Dive
+            </Link>
         </div>
         <ul>
             {user ? (
+            <>
+                <li>
+                    <Link to='/intakepatient'>
+                        Patient Intake
+                    </Link>
+                </li>
                 <li>
                     <button className='btn' onClick={onLogout}>
                         <FaSignOutAlt /> Logout
                     </button>
                 </li>
+            </>
             ) : (
             <>
                 <li>

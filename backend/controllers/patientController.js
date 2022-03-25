@@ -5,8 +5,23 @@ const Patient = require('../models/patientModel');
 // @desc Get patient info
 // @route GET /api/patients
 // @access Private
-const getPatient = asyncHandler(async (req,res) => {
+const getPatients = asyncHandler(async (req,res) => {
     const patient = await Patient.find({ user: req.user.id });
+
+    res.status(200).json(patient);
+});
+
+// @desc Get single patient info
+// @route GET /api/patients
+// @access Private
+const getPatient = asyncHandler(async (req,res) => {
+    const patient = await Patient.findById(req.params.id);
+
+    // Make sure the patient exists
+    if(!patient) {
+        res.status(400)
+        throw new Error('Patient not found')
+    };
 
     res.status(200).json(patient);
 });
@@ -29,20 +44,20 @@ const intakePatient = asyncHandler(async (req, res) => {
         icuVisits,
         mortality } = req.body;
 
-    // Check that all fields are completed
-    if(!patientId ||
-        !age ||
-        !height ||
-        !weight ||
-        !bmi ||
-        !race ||
-        !covidTestPositive ||
-        !icuAdmit ||
-        !icuVisits ||
-        !mortality) {
-        res.status(400);
-        throw new Error('Please add all fields')
-    };
+    // // Check that all fields are completed
+    // if(!patientId ||
+    //     !age ||
+    //     !height ||
+    //     !weight ||
+    //     !bmi ||
+    //     !race ||
+    //     !covidTestPositive ||
+    //     !icuAdmit ||
+    //     !icuVisits ||
+    //     !mortality) {
+    //     res.status(400);
+    //     throw new Error('Please add all fields')
+    // };
 
     // Check if a patient exists
     const patientExists = await Patient.findOne({patientId});
@@ -129,6 +144,7 @@ const deletePatient = asyncHandler(async (req,res) => {
 });
 
 module.exports = {
+    getPatients,
     getPatient,
     intakePatient,
     updatePatient,

@@ -6,8 +6,10 @@ import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-// import Changer from './pages/Changer';
-//import ExamDetail from './pages/ExamDetail';
+import PatientIntake from './pages/PatientIntake';
+// import PatientDetail from './pages/PatientDetail.jsx';
+// import LogExam from './pages/LogExam.jsx';
+// import ExamDetail from './pages/ExamDetail';
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            {/* <Route path='/admin' element={<Changer />} /> */}
-            {/* <Route path='/examview' element={<ExamDetail />} /> */}
+            <Route path='/intakepatient' element={<PatientIntake />} />
+            {/* <Route path='/patientview' element={<PatientDetail />} />
+            <Route path='/logexam' element={<LogExam />} />
+            <Route path='/examview' element={<ExamDetail />} /> */}
           </Routes>
         </div>
       </Router>
