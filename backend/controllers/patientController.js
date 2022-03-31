@@ -44,20 +44,20 @@ const intakePatient = asyncHandler(async (req, res) => {
         icuVisits,
         mortality } = req.body;
 
-    // // Check that all fields are completed
-    // if(!patientId ||
-    //     !age ||
-    //     !height ||
-    //     !weight ||
-    //     !bmi ||
-    //     !race ||
-    //     !covidTestPositive ||
-    //     !icuAdmit ||
-    //     !icuVisits ||
-    //     !mortality) {
-    //     res.status(400);
-    //     throw new Error('Please add all fields')
-    // };
+    // Check that all fields are completed
+    if(!patientId ||
+        !age ||
+        !height ||
+        !weight ||
+        !bmi ||
+        !race ||
+        !covidTestPositive ||
+        !icuAdmit ||
+        !icuVisits ||
+        !mortality) {
+        res.status(400);
+        throw new Error('Please add all fields')
+    };
 
     // Check if a patient exists
     const patientExists = await Patient.findOne({patientId});
