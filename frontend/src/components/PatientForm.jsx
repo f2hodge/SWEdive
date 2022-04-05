@@ -7,33 +7,19 @@ import{ intakePatient, reset } from '../features/patients/patientSlice';
 function PatientForm() {
     const initialState = {
         patientId: "",
-        age: 0,
+        age: "",
         // birthSex: null,
         height: "",
-        weight: 0,
-        bmi: 0,
+        weight: "",
+        bmi: "",
         race: "",
         covidTestPositive: false,
         icuAdmit: false,
-        icuVisits: 0,
+        icuVisits: "",
         mortality: false,
     };
 
-    const [state, setState] = useState({initialState});
-
-    // const initialState = {
-    //     patientId: "",
-    //     age: 0,
-    //     // birthSex: null,
-    //     height: "",
-    //     weight: 0,
-    //     bmi: 0,
-    //     race: "",
-    //     covidTestPositive: false,
-    //     icuAdmit: false,
-    //     icuVisits: 0,
-    //     mortality: false,
-    // };
+    const [state, setState] = useState({ ...initialState });
 
     const clearState = () => {
         setState({...initialState})
@@ -53,13 +39,15 @@ function PatientForm() {
     const onSubmit = e => {
         e.preventDefault();
 
-        dispatch(intakePatient({state}));
+        // console.dir(state);
+
+        dispatch(intakePatient(state));
 
         clearState();
 
         navigate('/');
 
-        // Possible replacement for "setState(null)"
+        // Possible replacement for "setState(null)" or "clearState()"
         // left off here 2022.03.20 01:44
         // return () => {
         //     dispatch(reset());

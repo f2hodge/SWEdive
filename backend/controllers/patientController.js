@@ -32,6 +32,7 @@ const getPatient = asyncHandler(async (req,res) => {
 const intakePatient = asyncHandler(async (req, res) => {
 
     // Take in the requested fields from the body
+    // console.log(req.body);
     const { 
         patientId,
         age,
