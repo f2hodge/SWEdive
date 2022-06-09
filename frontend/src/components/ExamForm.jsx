@@ -4,19 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import{ intakePatient, reset } from '../features/patients/patientSlice';
 
-function PatientForm() {
+function ExamForm() {
     const initialState = {
         patientId: "",
-        age: "",
-        // birthSex: null,
-        height: "",
-        weight: "",
-        bmi: "",
-        race: "",
-        covidTestPositive: false,
-        icuAdmit: false,
-        icuVisits: "",
-        mortality: false,
+        testName: "",
+        hoursSinceDiagnosis: "",
+        imageLink: "",
+        findings: "",
     };
 
     const [state, setState] = useState({ ...initialState });
@@ -39,19 +33,11 @@ function PatientForm() {
     const onSubmit = e => {
         e.preventDefault();
 
-        // console.dir(state);
-
-        dispatch(intakePatient(state));
+        dispatch(logExam(state));
 
         clearState();
 
         navigate('/');
-
-        // Possible replacement for "setState(null)" or "clearState()"
-        // left off here 2022.03.20 01:44
-        // return () => {
-        //     dispatch(reset());
-        // };
     };
 
     return <section className='form'>
@@ -61,50 +47,29 @@ function PatientForm() {
                 <input 
                     placeholder="Enter Patient's ID"
                     type="text" 
-                    name='patientId' 
-                    id='patientId' 
+                    name="patientId"
+                    id="patientId"
                     value={state.patientId} 
                     onChange={handleChange}
                 />
                 <br />
-                <label htmlFor="text">Age</label>
+                <label htmlFor="text">Test Name</label>
                 <input 
-                    placeholder="Enter Age in years"
-                    type="number" 
-                    name='age' 
-                    id='age'
-                    min="0"
-                    value={state.age} 
+                    placeholder="Enter Name of Test"
+                    type="text" 
+                    name="testName" 
+                    id="testName"
+                    value={state.testName} 
                     onChange={handleChange}
                 />
-                {/* <br />
-                <label htmlFor="text">Sex assigned at Birth</label>
-                <div style={{display: "inline-block"}}>Male {" "} 
-                <input 
-                    type="radio" 
-                    name='birthSex' 
-                    id='birthSex' 
-                    value="M" 
-                    checked={state.birthSex === "M"} 
-                    onChange={handleChange}
-                /> </div>
-                <div style={{display: "inline-block"}}>Female {" "} 
-                <input 
-                    type="radio" 
-                    name='birthSex' 
-                    id='birthSex' 
-                    value="F"
-                    checked={state.birthSex === "F"} 
-                    onChange={handleChange}
-                /> </div> */}
                 <br />
-                <label htmlFor="text">Height</label>
+                <label htmlFor="text">ImageLink</label>
                 <input 
-                    placeholder='Enter height in feet and inches'
-                    type="text" 
-                    name='height' 
-                    id='height' 
-                    value={state.height} 
+                    placeholder="Enter Hours since Diagnosis"
+                    type="number" 
+                    name="hoursSinceDiagnosis" 
+                    id="hoursSinceDiagnosis" 
+                    value={state.hoursSinceDiagnosis} 
                     onChange={handleChange}
                 />
                 <br />
@@ -198,11 +163,11 @@ function PatientForm() {
             <h5>Mortality status?: {state.mortality ? "Deceased" : "Living"}</h5> */}
             <div className="form-group">
                 <button className="btn btn-block" type='submit'>
-                    Add Patient
+                    Add Exam
                 </button>
             </div>
         </form>
     </section>
 }
 
-export default PatientForm
+export default ExamForm

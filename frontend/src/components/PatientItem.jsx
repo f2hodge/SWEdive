@@ -13,6 +13,9 @@ function PatientItem({ patient }) {
         <h2>
             {patient.patientId}
         </h2>
+        <h3>
+            ;
+        </h3>
         <button 
             onClick={() => dispatch(deletePatient(patient._id))} 
             className="close">
